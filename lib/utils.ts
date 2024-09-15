@@ -7,6 +7,6 @@ export function cn(...inputs: ClassValue[]) {
 
 export const trackEvent = (eventName: string) => {
   if (typeof window !== "undefined" && "beam" in window) {
-    window.beam(`/custom-events/minigamesai/${eventName}`);
+    (window as Window & { beam: (path: string) => void }).beam(`/custom-events/minigamesai/${eventName}`);
   }
 };
