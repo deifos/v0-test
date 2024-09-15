@@ -80,7 +80,7 @@ export default function GrowingBubbleMathGame() {
 
   return (
     <div
-      className={`flex-grow flex flex-col items-center  justify-center ${
+      className={`flex-grow flex flex-col items-center justify-center p-4 ${
         isWrongAnswer ? "red-flash" : ""
       }`}
     >
@@ -98,52 +98,61 @@ export default function GrowingBubbleMathGame() {
           animation: redFlash 1s ease-in-out;
         }
       `}</style>
-      <h1 className="text-4xl font-bold mb-8 text-blue-800">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8 text-blue-800 text-center">
         Growing Bubble Math Game
       </h1>
       {!gameOver ? (
         <>
-          <div className="text-3xl font-semibold mb-8 bg-white rounded-full px-6 py-3 shadow-lg">
+          <div className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-8 bg-white rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg">
             {question.question || "Loading..."}
           </div>
           {gameStarted && (
             <>
-              <motion.div
-                className="bg-yellow-300 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg mb-8"
-                style={{
-                  width: bubbleSize,
-                  height: bubbleSize,
-                }}
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              >
-                {timeLeft}
-              </motion.div>
+              <div className="h-[calc(80vw)] max-h-[300px] flex items-center justify-center mb-4 sm:mb-8">
+                <motion.div
+                  className="bg-yellow-300 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold shadow-lg"
+                  style={{
+                    width: bubbleSize,
+                    height: bubbleSize,
+                    maxWidth: "80vw",
+                    maxHeight: "80vw",
+                  }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                >
+                  {timeLeft}
+                </motion.div>
+              </div>
               <form
                 onSubmit={checkAnswer}
-                className="flex flex-col items-center gap-4"
+                className="flex flex-col items-center gap-2 sm:gap-4 w-full max-w-xs"
               >
                 <Input
                   type="number"
                   value={userAnswer}
                   onChange={(e) => setUserAnswer(e.target.value)}
                   placeholder="Type your answer"
-                  className="text-2xl font-bold text-center w-40"
+                  className="text-xl sm:text-2xl font-bold text-center w-full"
                   autoFocus
                 />
-                <Button type="submit" className="w-40 h-12 text-xl font-bold">
+                <Button
+                  type="submit"
+                  className="w-full h-10 sm:h-12 text-lg sm:text-xl font-bold"
+                >
                   Submit
                 </Button>
               </form>
-              <div className="mt-8 flex justify-between w-full max-w-xs">
-                <div className="text-2xl font-semibold">Score: {score}</div>
-                <div className="text-2xl font-semibold text-red-600">
+              <div className="mt-4 sm:mt-8 flex justify-between w-full max-w-xs">
+                <div className="text-lg sm:text-2xl font-semibold">
+                  Score: {score}
+                </div>
+                <div className="text-lg sm:text-2xl font-semibold text-red-600">
                   Errors: {errors}/2
                 </div>
               </div>
@@ -152,9 +161,15 @@ export default function GrowingBubbleMathGame() {
         </>
       ) : (
         <div className="text-center">
-          <h2 className="text-3xl font-bold mb-4">Game Over!</h2>
-          <p className="text-xl mb-2">Your final score: {score}</p>
-          <p className="text-xl mb-4 text-red-600">Total errors: {errors}</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4">
+            Game Over!
+          </h2>
+          <p className="text-lg sm:text-xl mb-1 sm:mb-2">
+            Your final score: {score}
+          </p>
+          <p className="text-lg sm:text-xl mb-2 sm:mb-4 text-red-600">
+            Total errors: {errors}
+          </p>
           <Button
             onClick={handlePlayAgain}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
