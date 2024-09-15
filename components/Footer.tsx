@@ -19,7 +19,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="underline hover:text-gray-900 dark:hover:text-gray-200"
           >
-            @deiofosv
+            @deifosv
           </a>
         </p>
       </div>
