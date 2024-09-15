@@ -125,7 +125,7 @@ export default function BubbleMathGame() {
                   repeatType: "loop",
                   ease: "linear",
                 }}
-                style={{ left: `${20 + index * 20}%` }}
+                style={{ left: `${30 + index * 20}%` }} // Adjusted from 20% to 30%
                 onClick={() => checkAnswer(answer)}
               >
                 {answer}
