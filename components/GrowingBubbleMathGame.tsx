@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect, FormEvent } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { trackEvent } from "@/lib/utils";
 
 export default function GrowingBubbleMathGame() {
   const [question, setQuestion] = useState({ question: "", answer: 0 });
@@ -50,6 +51,11 @@ export default function GrowingBubbleMathGame() {
     setBubbleSize(50);
     setIsWrongAnswer(false);
     setGameStarted(true);
+  };
+
+  const handlePlayAgain = () => {
+    trackEvent("GrowingBubbleMathGame");
+    resetGame();
   };
 
   const checkAnswer = (e: FormEvent) => {
@@ -150,8 +156,8 @@ export default function GrowingBubbleMathGame() {
           <p className="text-xl mb-2">Your final score: {score}</p>
           <p className="text-xl mb-4 text-red-600">Total errors: {errors}</p>
           <Button
-            onClick={resetGame}
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            onClick={handlePlayAgain}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             Play Again
           </Button>

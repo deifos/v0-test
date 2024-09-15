@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import Confetti from "react-confetti";
+import { trackEvent } from "@/lib/utils";
 
 export default function BubbleMathGame() {
   const [question, setQuestion] = useState({ question: "", answer: 0 });
@@ -40,6 +41,11 @@ export default function BubbleMathGame() {
     setIsWrongAnswer(false);
     setGameWon(false);
     setShowConfetti(false);
+  };
+
+  const handlePlayAgain = () => {
+    trackEvent("BubbleMathGame");
+    resetGame();
   };
 
   const checkAnswer = (selectedAnswer: number) => {
@@ -141,8 +147,8 @@ export default function BubbleMathGame() {
           </p>
           <p className="text-2xl mb-4">Your final score: {score}</p>
           <Button
-            onClick={resetGame}
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            onClick={handlePlayAgain}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             Play Again
           </Button>
@@ -152,8 +158,8 @@ export default function BubbleMathGame() {
           <h2 className="text-3xl font-bold mb-4">Game Over!</h2>
           <p className="text-xl mb-2">Your final score: {score}</p>
           <Button
-            onClick={resetGame}
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            onClick={handlePlayAgain}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             Play Again
           </Button>
