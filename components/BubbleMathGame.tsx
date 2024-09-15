@@ -119,13 +119,18 @@ export default function BubbleMathGame() {
                 className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-yellow-300 flex items-center justify-center text-lg sm:text-xl font-bold shadow-md hover:bg-yellow-400 focus:outline-none"
                 initial={{ y: -50 }}
                 animate={{ y: 200 }}
+                onAnimationComplete={() => {
+                  // Reset position logic here
+                  // Logic to reset position should be handled outside of the definition
+                  // You may need to use a state or ref to manage the position
+                }}
                 transition={{
                   duration: 6 + index * 1.5,
                   repeat: Infinity,
                   repeatType: "loop",
                   ease: "linear",
                 }}
-                style={{ left: `${30 + index * 20}%` }} // Adjusted from 20% to 30%
+                style={{ left: `${30 + index * 20}%`, y: 20 }} // Adjusted to allow bubbles to fall 20px lower
                 onClick={() => checkAnswer(answer)}
               >
                 {answer}
