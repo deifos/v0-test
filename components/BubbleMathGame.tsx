@@ -102,7 +102,9 @@ export default function BubbleMathGame() {
         isWrongAnswer ? "red-flash" : ""
       }`}
     >
-      {showConfetti && <Confetti />}
+      {showConfetti && (
+        <Confetti width={window.innerWidth} height={window.innerHeight} />
+      )}
 
       <h1 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-8 text-blue-800">
         Bubble Math Game
