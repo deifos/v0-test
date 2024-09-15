@@ -130,7 +130,7 @@ export default function BubbleMathGame() {
                   repeatType: "loop",
                   ease: "linear",
                 }}
-                style={{ left: `${30 + index * 20}%`, y: 20 }} // Adjusted to allow bubbles to fall 20px lower
+                style={{ left: `${60 - index * 10}%`, y: 20 }} // Adjusted for desktop centering to the left
                 onClick={() => checkAnswer(answer)}
               >
                 {answer}
