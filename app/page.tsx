@@ -14,7 +14,7 @@ export default function Home() {
       {pathname !== "/game1" && pathname !== "/game2" && (
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-8 text-blue-800">
-            Welcome to MinigamesAI!
+            Welcome to MiniGamesAI!
           </h1>
           <p className="text-xl mb-8">
             Choose a game from the navigation menu to start playing.

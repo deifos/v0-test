@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "MiniGameAI",
-  description: "Small games created to keep your brain running",
+  title: "MinigamesAI",
+  description: "Small games created using AI to keep your brain running",
 };
 
 export default function RootLayout({
