@@ -132,7 +132,10 @@ export default function BubbleMathGame() {
               </motion.button>
             ))}
           </div>
-          <div className="mt-4 sm:mt-8 flex justify-between w-full max-w-xs">
+          <div
+            className="mt-4 sm:mt-8 flex justify-between w-full max-w-xs"
+            style={{ marginTop: "150px" }}
+          >
             <div className="text-xl sm:text-2xl font-semibold">
               Score: {score}
             </div>
