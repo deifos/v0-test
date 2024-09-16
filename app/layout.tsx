@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Script from "next/script";
+import { env } from "process";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <Script
         src="https://beamanalytics.b-cdn.net/beam.min.js"
-        data-token={`env.NEXT_PUBLIC_BEAM_TOKEN`}
+        data-token={`${env.NEXT_PUBLIC_BEAM_TOKEN}`}
         async
       />
       <body
