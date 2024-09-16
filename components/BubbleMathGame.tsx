@@ -92,6 +92,17 @@ export default function BubbleMathGame() {
     ...generateWrongAnswers(question.answer),
   ].sort(() => Math.random() - 0.5);
 
+  const getButtonPosition = (index: number) => {
+    const isMobile = window.innerWidth < 640;
+    const totalButtons = answers.length;
+    const buttonWidth = isMobile ? 48 : 64; // w-12 = 48px, w-16 = 64px
+    const spacing = isMobile ? 80 : 40; // Increase spacing for mobile
+    const totalWidth =
+      totalButtons * buttonWidth + (totalButtons - 1) * spacing;
+    const startPosition = (window.innerWidth - totalWidth) / 2; // Centering the buttons
+    return `${startPosition + index * (buttonWidth + spacing)}px`;
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -114,26 +125,28 @@ export default function BubbleMathGame() {
           <div className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-8 bg-white rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg">
             {question.question || "Loading..."}
           </div>
-          <div className="relative w-full h-48 sm:h-64">
-            {answers.map((answer, index) => (
-              <motion.button
-                key={`${resetKey}-${index}`}
-                className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-yellow-300 flex items-center justify-center text-lg sm:text-xl font-bold shadow-md hover:bg-yellow-400 focus:outline-none"
-                initial={{ y: -50 }}
-                animate={{ y: 200 }}
-                onAnimationComplete={() => {}}
-                transition={{
-                  duration: 6 + index * 1.5,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  ease: "linear",
-                }}
-                style={{ left: `${60 - index * 10}%`, y: 50 }} // Adjusted for lower starting position
-                onClick={() => checkAnswer(answer)}
-              >
-                {answer}
-              </motion.button>
-            ))}
+          <div className="relative w-full h-48 sm:h-64 flex justify-center items-center">
+            <div className="relative w-full" style={{ maxWidth: "100%" }}>
+              {answers.map((answer, index) => (
+                <motion.button
+                  key={`${resetKey}-${index}`}
+                  className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-yellow-300 flex items-center justify-center text-lg sm:text-xl font-bold shadow-md hover:bg-yellow-400 focus:outline-none"
+                  initial={{ y: -50 }}
+                  animate={{ y: 200 }}
+                  onAnimationComplete={() => {}}
+                  transition={{
+                    duration: 6 + index * 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    ease: "linear",
+                  }}
+                  style={{ left: getButtonPosition(index) }}
+                  onClick={() => checkAnswer(answer)}
+                >
+                  {answer}
+                </motion.button>
+              ))}
+            </div>
           </div>
           <div
             className="mt-4 sm:mt-8 flex justify-between w-full max-w-xs"
