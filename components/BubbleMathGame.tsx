@@ -126,11 +126,11 @@ export default function BubbleMathGame() {
             {question.question} = ?
           </div>
           <div className="relative w-full h-48 sm:h-64 flex justify-center items-center">
-            <div className="relative w-full" style={{ maxWidth: "400px" }}>
+            <div className="relative w-full" style={{ maxWidth: "100%" }}>
               {answers.map((answer, index) => (
                 <motion.button
                   key={`${resetKey}-${index}`}
-                  className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-yellow-300 flex items-center justify-center text-lg sm:text-xl font-bold shadow-md hover:bg-yellow-400 focus:outline-none"
+                  className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-yellow-300 flex items-center justify-center text-lg sm:text-xl font-bold text-black shadow-md hover:bg-yellow-400 focus:outline-none"
                   initial={{ y: -50 }}
                   animate={{ y: 200 }}
                   onAnimationComplete={() => {}}
