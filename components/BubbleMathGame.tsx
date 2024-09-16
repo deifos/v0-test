@@ -122,11 +122,11 @@ export default function BubbleMathGame() {
       </h1>
       {!gameOver && !gameWon ? (
         <>
-          <div className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-8 bg-white rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg">
-            {question.question || "Loading..."}
+          <div className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-8 bg-white rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg text-black">
+            {question.question} = ?
           </div>
           <div className="relative w-full h-48 sm:h-64 flex justify-center items-center">
-            <div className="relative w-full" style={{ maxWidth: "100%" }}>
+            <div className="relative w-full" style={{ maxWidth: "400px" }}>
               {answers.map((answer, index) => (
                 <motion.button
                   key={`${resetKey}-${index}`}
